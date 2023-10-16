@@ -10,12 +10,9 @@ class DetailsPageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: Alignment.center,
-      clipBehavior: Clip.none,
       children: [
         Positioned(
-          bottom: 0,
-          left: 0,
+          bottom: 0.0,
           child: Container(
             height: AppConstants.size.height * .75,
             width: AppConstants.size.width,
@@ -26,45 +23,41 @@ class DetailsPageBody extends StatelessWidget {
                 topRight: Radius.circular(50),
               ),
             ),
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Positioned(
-                  top: -50,
-                  right: 20,
-                  left: 20,
-                  child: Container(
-                    height: 300,
-                    width: AppConstants.size.width * .7,
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.center,
-                          colors: [
-                            Color(0xffa9c1f5),
-                            Color(0xff6696f5),
-                          ]),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.blue.withOpacity(.1),
-                          offset: const Offset(0, 25),
-                          blurRadius: 3,
-                          spreadRadius: -10,
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(15),
+          ),
+        ),
+        Positioned(
+          right: 20,
+          left: 20,
+          bottom: 10,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                height: 300,
+                width: AppConstants.size.width * .7,
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.center,
+                      colors: [
+                        Color(0xffa9c1f5),
+                        Color(0xff6696f5),
+                      ]),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.blue.withOpacity(.1),
+                      offset: const Offset(0, 25),
+                      blurRadius: 3,
+                      spreadRadius: -10,
                     ),
-                    child: const Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        CurrentForecastDetails(),
-                        ForecastsList(),
-                      ],
-                    ),
-                  ),
+                  ],
+                  borderRadius: BorderRadius.circular(15),
                 ),
-              ],
-            ),
+                child: const CurrentForecastDetails(),
+              ),
+              const SizedBox(height: 20),
+              const ForecastsList(),
+            ],
           ),
         ),
       ],
